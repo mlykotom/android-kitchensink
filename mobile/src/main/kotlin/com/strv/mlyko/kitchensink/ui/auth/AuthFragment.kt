@@ -7,6 +7,7 @@ import com.strv.mlyko.kitchensink.databinding.FragmentAuthBinding
 
 interface AuthView {
 	fun onRegisterClick()
+	fun onLoginClick()
 }
 
 class AuthFragment : BaseFragment<FragmentAuthBinding>(), AuthView {
@@ -14,5 +15,9 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>(), AuthView {
 
 	override fun onRegisterClick() {
 		findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToAuthRegisterFragment())
+	}
+
+	override fun onLoginClick() {
+		findNavController().navigate(AuthFragmentDirections.actionAuthFragmentToAuthLoginFragment())
 	}
 }

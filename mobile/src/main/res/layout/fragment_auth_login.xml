@@ -4,7 +4,7 @@
 	<data>
 		<variable
 			name="view"
-			type="com.strv.mlyko.kitchensink.ui.auth.AuthView" />
+			type="com.strv.mlyko.kitchensink.ui.auth.login.AuthLoginView" />
 	</data>
 
 	<LinearLayout
@@ -17,19 +17,13 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:gravity="center"
-			android:text="auth fragment" />
+			android:text="login here" />
 
 		<Button
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="Login"
-			android:onClick="@{() -> view.onLoginClick()}" />
-
-		<Button
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="Register"
-			android:onClick="@{() -> view.onRegisterClick()}" />
+			android:text="Submit"
+			android:onClick="@{() -> view.onSubmitClick()}" />
 
 	</LinearLayout>
 </layout>

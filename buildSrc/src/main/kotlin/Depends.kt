@@ -16,31 +16,48 @@ object Versions {
 	const val androidxViewPager2 = "1.0.0"
 
 	const val materialComponents = "1.1.0-beta02"
-}
 
-object ClasspathDepends {
-	const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.androidGradle}"
-	const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-	const val androidxNavigationPlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.androidxNavigation}"
+	const val dagger = "2.25.2"
 }
 
 object Depends {
-	const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+	object Classpath {
+		const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.androidGradle}"
+		const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+		const val androidxNavigationPlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.androidxNavigation}"
+	}
 
-	const val androidxAppcompat = "androidx.appcompat:appcompat:${Versions.androidxAppcompat}"
-	const val androidxCoreKtx = "androidx.core:core-ktx:${Versions.androidxCore}"
+	object Kotlin {
+		const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+	}
 
-	const val androidxLifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.androidxLifecycle}"
-	const val androidxLifecycleCommon = "androidx.lifecycle:lifecycle-common-java8:${Versions.androidxLifecycle}"
-	const val androidxLifecycleViewModelSavedState = "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.androidxLifecycleSavedStated}"
+	object AndroidX {
+		const val appcompat = "androidx.appcompat:appcompat:${Versions.androidxAppcompat}"
+		const val coreKtx = "androidx.core:core-ktx:${Versions.androidxCore}"
 
-	const val androidxConstraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.androidxConstraintLayout}"
-	const val androidxNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.androidxNavigation}"
-	const val androidxNavigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.androidxNavigation}"
-	const val androidxViewPager2 = "androidx.viewpager2:viewpager2:${Versions.androidxViewPager2}"
+		object Lifecycle {
+			const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.androidxLifecycle}"
+			const val common = "androidx.lifecycle:lifecycle-common-java8:${Versions.androidxLifecycle}"
+			const val viewModelSavedState = "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.androidxLifecycleSavedStated}"
+		}
 
-	const val materialComponents = "com.google.android.material:material:${Versions.materialComponents}"
+		const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.androidxConstraintLayout}"
+		const val viewPager2 = "androidx.viewpager2:viewpager2:${Versions.androidxViewPager2}"
 
+		const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.androidxNavigation}"
+		const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.androidxNavigation}"
+	}
+
+	object Google {
+		const val materialComponents = "com.google.android.material:material:${Versions.materialComponents}"
+	}
+
+	object DI {
+		const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
+		const val daggerAndroid = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+		const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+		const val daggerAnnotationProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+	}
 }
 
 object TestDepends {

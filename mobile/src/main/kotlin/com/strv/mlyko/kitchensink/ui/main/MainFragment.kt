@@ -1,6 +1,8 @@
 package com.strv.mlyko.kitchensink.ui.main
 
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -10,12 +12,15 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.strv.mlyko.kitchensink.arch.BaseFragmentWithViewModel
 import com.strv.mlyko.kitchensink.databinding.FragmentMainBinding
+import javax.inject.Inject
 
 interface MainView {
 	fun onNextClick()
 }
 
-class MainFragment : BaseFragmentWithViewModel<MainViewModel, FragmentMainBinding>(), MainView {
+class MainFragment @Inject constructor(
+	private val sharedPreferences: SharedPreferences
+) : BaseFragmentWithViewModel<MainViewModel, FragmentMainBinding>(), MainView {
 	override val viewModel: MainViewModel by viewModels { SavedStateViewModelFactory(requireActivity().application, this) }
 
 	override fun inflateBinding(inflater: LayoutInflater) = FragmentMainBinding.inflate(inflater)
@@ -30,6 +35,11 @@ class MainFragment : BaseFragmentWithViewModel<MainViewModel, FragmentMainBindin
 			val message = it ?: return@observe
 			Snackbar.make(view, message, Snackbar.LENGTH_LONG).show()
 		}
+	}
+
+	override fun onStart() {
+		super.onStart()
+		Log.d("Asd", sharedPreferences.getString("banan", "neni tam"))
 	}
 }
 

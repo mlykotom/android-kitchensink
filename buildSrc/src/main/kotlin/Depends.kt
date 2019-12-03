@@ -14,6 +14,7 @@ object Versions {
 	const val androidxConstraintLayout = "2.0.0-beta3"
 	const val androidxNavigation = "2.2.0-rc02"
 	const val androidxViewPager2 = "1.0.0"
+	const val androidxPreferences = "1.1.0"
 
 	const val materialComponents = "1.1.0-beta02"
 
@@ -34,9 +35,13 @@ object Depends {
 	object AndroidX {
 		const val appcompat = "androidx.appcompat:appcompat:${Versions.androidxAppcompat}"
 		const val coreKtx = "androidx.core:core-ktx:${Versions.androidxCore}"
+		const val preferences = "androidx.preference:preference-ktx:${Versions.androidxPreferences}"
 
 		object Lifecycle {
 			const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.androidxLifecycle}"
+			const val liveDataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.androidxLifecycle}"
+			const val runtimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.androidxLifecycle}"
+			const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidxLifecycle}"
 			const val common = "androidx.lifecycle:lifecycle-common-java8:${Versions.androidxLifecycle}"
 			const val viewModelSavedState = "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.androidxLifecycleSavedStated}"
 		}

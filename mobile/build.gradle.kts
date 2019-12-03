@@ -41,17 +41,22 @@ tasks.withType<KotlinCompile> {
 
 dependencies {
 	implementation(Depends.Kotlin.stdlib)
+
 	implementation(Depends.AndroidX.appcompat)
 	implementation(Depends.AndroidX.coreKtx)
-
-	implementation(Depends.AndroidX.Lifecycle.extensions)
-	implementation(Depends.AndroidX.Lifecycle.common)
-	implementation(Depends.AndroidX.Lifecycle.viewModelSavedState)
-
 	implementation(Depends.AndroidX.constraintLayout)
 	implementation(Depends.AndroidX.navigationFragment)
 	implementation(Depends.AndroidX.navigationUI)
 	implementation(Depends.AndroidX.viewPager2)
+	implementation(Depends.AndroidX.preferences)
+
+	implementation(Depends.AndroidX.Lifecycle.extensions)
+	implementation(Depends.AndroidX.Lifecycle.common)
+	implementation(Depends.AndroidX.Lifecycle.viewModelSavedState)
+	implementation(Depends.AndroidX.Lifecycle.liveDataKtx)
+	implementation(Depends.AndroidX.Lifecycle.runtimeKtx)
+	implementation(Depends.AndroidX.Lifecycle.viewModelKtx)
+
 	implementation(Depends.Google.materialComponents)
 
 	implementation(Depends.DI.dagger)

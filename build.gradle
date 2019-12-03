@@ -1,21 +1,21 @@
 buildscript {
-    repositories {
-        google()
-        jcenter()
-        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' } // TODO remove later when not canary AS
-    }
+	repositories {
+		google()
+		jcenter()
+		maven {url 'https://dl.bintray.com/kotlin/kotlin-eap'} // TODO remove later when not canary AS
+	}
 
-    dependencies {
-        classpath ClasspathDepends.androidGradlePlugin
-        classpath ClasspathDepends.kotlinPlugin
-        classpath ClasspathDepends.androidxNavigationPlugin
-    }
+	dependencies {
+		classpath ClasspathDepends.androidGradlePlugin
+		classpath ClasspathDepends.kotlinPlugin
+		classpath ClasspathDepends.androidxNavigationPlugin
+	}
 }
 
 allprojects {
-    repositories {
-        google()
-        jcenter()
-        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' } // TODO remove later when not canary AS
-    }
+	repositories {
+		google()
+		jcenter()
+		maven {url 'https://dl.bintray.com/kotlin/kotlin-eap'} // TODO remove later when not canary AS
+	}
 }

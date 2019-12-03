@@ -11,7 +11,6 @@ interface AuthLoginView {
 
 class AuthLoginFragment : BaseFragment<FragmentAuthLoginBinding>(), AuthLoginView {
 	override fun inflateBinding(inflater: LayoutInflater) = FragmentAuthLoginBinding.inflate(inflater)
-	override fun onSubmitClick() {
-		findNavController().navigate(AuthLoginFragmentDirections.actionAuthLoginFragmentPopAuth())
-	}
+
+	override fun onSubmitClick() = findNavController().navigate(AuthLoginFragmentDirections.actionAuthLoginFragmentPopAuth())
 }

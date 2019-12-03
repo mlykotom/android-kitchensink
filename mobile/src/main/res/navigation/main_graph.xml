@@ -21,6 +21,5 @@
 	</fragment>
 
 	<include
-		android:id="@id/auth_graph"
-		app:graph="@navigation/auth_graph" />
+		android:id="@id/auth_graph" app:graph="@navigation/auth_graph" />
 </navigation>

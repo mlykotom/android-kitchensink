@@ -1,2 +1,2 @@
-rootProject.name='Kitchen Sink'
+rootProject.name = 'Kitchen Sink'
 include ':mobile'

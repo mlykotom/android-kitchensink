@@ -1,15 +1,15 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    `kotlin-dsl`
-    groovy
+	`kotlin-dsl`
+	groovy
 }
 
 repositories {
-    google()
-    jcenter()
+	google()
+	jcenter()
 }
 
 kotlinDslPluginOptions {
-    experimentalWarning.set(false)
+	experimentalWarning.set(false)
 }

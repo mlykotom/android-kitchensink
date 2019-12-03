@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	xmlns:app="http://schemas.android.com/apk/res-auto">
 
-	<TextView
-		android:layout_width="0dp"
-		android:layout_height="0dp"
-		android:gravity="center"
-		android:text="hello android fragment"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintEnd_toEndOf="parent" />
+	<data>
+		<variable
+			name="view"
+			type="com.strv.mlyko.kitchensink.ui.main.MainFragment" />
+	</data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<TextView
+			android:id="@+id/textView"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text="hello android fragment"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintVertical_chainStyle="packed"
+			app:layout_constraintBottom_toTopOf="@+id/button" />
+
+		<Button
+			android:id="@+id/button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Log in"
+			android:onClick="@{() -> view.onNextClick()}"
+			app:layout_constraintTop_toBottomOf="@+id/textView"
+			app:layout_constraintBottom_toBottomOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

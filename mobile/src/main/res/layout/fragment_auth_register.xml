@@ -4,26 +4,25 @@
 	<data>
 		<variable
 			name="view"
-			type="com.strv.mlyko.kitchensink.ui.auth.AuthView" />
+			type="com.strv.mlyko.kitchensink.ui.auth.register.AuthRegisterView" />
 	</data>
 
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:gravity="center"
 		android:orientation="vertical">
 
 		<TextView
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			android:gravity="center"
-			android:text="auth fragment" />
+			android:text="register here" />
 
 		<Button
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="Register"
-			android:onClick="@{() -> view.onRegisterClick()}" />
+			android:text="Submit"
+			android:onClick="@{() -> view.onSubmitClick()}" />
 
 	</LinearLayout>
 </layout>

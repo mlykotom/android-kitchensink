@@ -18,17 +18,28 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
+		<Button
+			android:id="@+id/button2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="show my dialog"
+			android:onClick="@{() -> view.onMyDialogClick()}"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toTopOf="@+id/textView"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintVertical_chainStyle="spread" />
+
 		<TextView
 			android:id="@+id/textView"
-			android:layout_width="0dp"
+			android:layout_width="411dp"
 			android:layout_height="wrap_content"
 			android:gravity="center"
 			android:text="hello android fragment"
+			app:layout_constraintTop_toBottomOf="@+id/button2"
+			app:layout_constraintBottom_toTopOf="@+id/button"
 			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			app:layout_constraintVertical_chainStyle="packed"
-			app:layout_constraintBottom_toTopOf="@+id/button" />
+			app:layout_constraintStart_toStartOf="parent" />
 
 		<Button
 			android:id="@+id/button"
@@ -37,7 +48,9 @@
 			android:text="Authenticate"
 			android:onClick="@{() -> view.onNextClick()}"
 			app:layout_constraintTop_toBottomOf="@+id/textView"
-			app:layout_constraintBottom_toBottomOf="parent" />
+			app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent" />
 
 		<TextView
 			android:layout_width="wrap_content"

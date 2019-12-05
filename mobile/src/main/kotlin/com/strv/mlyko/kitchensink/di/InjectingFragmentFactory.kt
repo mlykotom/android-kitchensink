@@ -1,6 +1,5 @@
 package com.strv.mlyko.kitchensink.di
 
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import javax.inject.Inject
@@ -20,9 +19,7 @@ class InjectingFragmentFactory @Inject constructor(
 	}
 
 	private fun createFragmentAsFallback(classLoader: ClassLoader, className: String): Fragment {
-		Log.w(TAG, "No creator found for class: $className. Using default constructor")
+		// WARNING: kept here, so Fragment can be instantiated without dagger. This applies for fragments outside of app (e.g. NavHostFragment)
 		return super.instantiate(classLoader, className)
 	}
 }
-
-private const val TAG = "InjectFragFactory"

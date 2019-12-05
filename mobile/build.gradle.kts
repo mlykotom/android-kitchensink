@@ -13,8 +13,8 @@ android {
 	defaultConfig {
 		minSdkVersion(Versions.minSdkVersion)
 		targetSdkVersion(Versions.targetSdkVersion)
-		versionCode = 1
-		versionName = "1.0"
+		versionCode = 156
+		versionName = "1.56"
 	}
 
 	sourceSets {
@@ -56,6 +56,7 @@ dependencies {
 	implementation(Depends.AndroidX.Lifecycle.liveDataKtx)
 	implementation(Depends.AndroidX.Lifecycle.runtimeKtx)
 	implementation(Depends.AndroidX.Lifecycle.viewModelKtx)
+	implementation(Depends.AndroidX.fragmentKtx)
 
 	implementation(Depends.Google.materialComponents)
 
@@ -64,4 +65,6 @@ dependencies {
 	kapt(Depends.DI.daggerCompiler)
 	kapt(Depends.DI.daggerAnnotationProcessor)
 
+	compileOnly(Depends.DI.Assisted.annotations)
+	kapt(Depends.DI.Assisted.processor)
 }

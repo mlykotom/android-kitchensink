@@ -15,10 +15,12 @@ object Versions {
 	const val androidxNavigation = "2.2.0-rc02"
 	const val androidxViewPager2 = "1.0.0"
 	const val androidxPreferences = "1.1.0"
+	const val androidXfragment = "1.2.0-rc02"
 
 	const val materialComponents = "1.1.0-beta02"
 
 	const val dagger = "2.25.2"
+	const val assistedInject = "0.5.2"
 }
 
 object Depends {
@@ -46,6 +48,8 @@ object Depends {
 			const val viewModelSavedState = "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.androidxLifecycleSavedStated}"
 		}
 
+		const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.androidXfragment}"
+
 		const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.androidxConstraintLayout}"
 		const val viewPager2 = "androidx.viewpager2:viewpager2:${Versions.androidxViewPager2}"
 
@@ -62,6 +66,11 @@ object Depends {
 		const val daggerAndroid = "com.google.dagger:dagger-android-support:${Versions.dagger}"
 		const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 		const val daggerAnnotationProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+
+		object Assisted {
+			const val annotations = "com.squareup.inject:assisted-inject-annotations-dagger2:${Versions.assistedInject}"
+			const val processor = "com.squareup.inject:assisted-inject-processor-dagger2:${Versions.assistedInject}"
+		}
 	}
 }
 

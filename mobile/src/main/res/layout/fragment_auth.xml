@@ -5,6 +5,10 @@
 		<variable
 			name="view"
 			type="com.strv.mlyko.kitchensink.ui.auth.AuthView" />
+
+		<variable
+			name="viewModel"
+			type="com.strv.mlyko.kitchensink.ui.auth.AuthViewModel" />
 	</data>
 
 	<LinearLayout
@@ -18,6 +22,12 @@
 			android:layout_height="wrap_content"
 			android:gravity="center"
 			android:text="auth fragment" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text='@{"suspend counter " + viewModel.authCounter}' />
 
 		<Button
 			android:layout_width="match_parent"

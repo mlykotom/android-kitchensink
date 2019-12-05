@@ -18,8 +18,20 @@
 			app:popEnterAnim="@anim/nav_default_pop_enter_anim"
 			app:popExitAnim="@anim/nav_default_pop_exit_anim"
 			app:destination="@id/auth_graph" />
+		<action
+			android:id="@+id/action_mainFragment_to_myDialog"
+			app:destination="@id/myDialog"
+			app:launchSingleTop="true" />
 	</fragment>
 
 	<include
 		android:id="@id/auth_graph" app:graph="@navigation/auth_graph" />
+
+	<dialog
+		android:id="@+id/myDialog" android:name="com.strv.mlyko.kitchensink.ui.main.MyDialog" android:label="MyDialog">
+
+		<argument
+			android:name="title" app:argType="string" />
+
+	</dialog>
 </navigation>

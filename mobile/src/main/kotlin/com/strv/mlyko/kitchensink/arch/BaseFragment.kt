@@ -35,8 +35,13 @@ abstract class BaseFragment<B : ViewDataBinding> : Fragment() {
 	}
 }
 
-abstract class BaseFragmentWithViewModel<VM : ViewModel, B : ViewDataBinding> : BaseFragment<B>(), HasDefaultViewModelProviderFactory {
+abstract class BaseFragmentWithViewModel<VM : BaseViewModel, B : ViewDataBinding> : BaseFragment<B>(), HasDefaultViewModelProviderFactory {
 	abstract val viewModel: VM
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		lifecycle.addObserver(viewModel)
+	}
 
 	override fun viewBindVariables(binding: B) {
 		super.viewBindVariables(binding)
@@ -45,7 +50,7 @@ abstract class BaseFragmentWithViewModel<VM : ViewModel, B : ViewDataBinding> : 
 
 	@Inject
 	lateinit var viewModelFactory: InjectingSavedStateViewModelFactory
-	
+
 	private val cachedViewModelFactory by lazy {
 		viewModelFactory.create(this, arguments)
 	}

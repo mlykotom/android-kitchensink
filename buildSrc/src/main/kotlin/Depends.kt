@@ -9,7 +9,7 @@ object Versions {
 	const val androidxAppcompat = "1.1.0"
 	const val androidxCore = "1.2.0-rc01"
 	const val androidxCoreTesting = "2.1.0"
-	const val androidxLifecycle = "2.2.0-rc02"
+	const val androidxLifecycle = "2.2.0-rc03"
 	const val androidxLifecycleSavedStated = "1.0.0-rc02"
 	const val androidxConstraintLayout = "2.0.0-beta3"
 	const val androidxNavigation = "2.2.0-rc02"
@@ -46,6 +46,8 @@ object Depends {
 			const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidxLifecycle}"
 			const val common = "androidx.lifecycle:lifecycle-common-java8:${Versions.androidxLifecycle}"
 			const val viewModelSavedState = "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.androidxLifecycleSavedStated}"
+			const val lifecycleCommonJava8 = "androidx.lifecycle:lifecycle-common-java8:$${Versions.androidxLifecycle}"
+
 		}
 
 		const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.androidXfragment}"

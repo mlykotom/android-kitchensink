@@ -5,11 +5,11 @@ import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
-import com.strv.mlyko.kitchensink.arch.events.SingleLiveEvent
 import com.strv.mlyko.kitchensink.AppVersion
+import com.strv.mlyko.kitchensink.arch.BaseViewModel
+import com.strv.mlyko.kitchensink.arch.events.SingleLiveEvent
 import com.strv.mlyko.kitchensink.di.ViewModelAssistedFactory
 
 const val KEY_STATE_COUNTER = "KEY_STATE_COUNTER"
@@ -19,7 +19,7 @@ class MainViewModel @AssistedInject constructor(
 	@Assisted private val savedStateHandle: SavedStateHandle,
 	private val appContext: Context,
 	private val appVersion: AppVersion
-) : ViewModel() {
+) : BaseViewModel() {
 	@AssistedInject.Factory
 	interface Factory : ViewModelAssistedFactory<MainViewModel> {
 		override fun create(savedStateHandle: SavedStateHandle): MainViewModel

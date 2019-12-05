@@ -5,21 +5,18 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
+import dagger.Reusable
 import javax.inject.Inject
 import javax.inject.Provider
-import javax.inject.Singleton
 
 interface ViewModelAssistedFactory<T : ViewModel> {
 	fun create(savedStateHandle: SavedStateHandle): T
 }
 
-/**
- * TODO: probably cannot be singleton, because not working with multiple scopes
- */
-@Singleton
+@Reusable
 class InjectingSavedStateViewModelFactory @Inject constructor(
-	private val assistedCreators: MutableMap<Class<out ViewModel>, ViewModelAssistedFactory<out ViewModel>>,
-	private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+	private val assistedFactories: Map<Class<out ViewModel>, @JvmSuppressWildcards ViewModelAssistedFactory<out ViewModel>>,
+	private val viewModelProviders: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ) {
 	fun create(
 		owner: SavedStateRegistryOwner,
@@ -31,31 +28,19 @@ class InjectingSavedStateViewModelFactory @Inject constructor(
 			modelClass: Class<T>,
 			handle: SavedStateHandle
 		): T {
-			// attempt assisted inject
-			val assistedCreator = assistedCreators[modelClass]
-			if (assistedCreator != null) {
+			// Attempt to get ViewModel from assisted inject factories
+			assistedFactories[modelClass]?.let {
 				try {
-					return assistedCreator.create(handle) as T
+					return it.create(handle) as T
 				} catch (e: Exception) {
 					throw RuntimeException(e)
 				}
 			}
 
-			// otherwise attempt to do normal inject
-			var creator: Provider<out ViewModel>? = creators[modelClass]
-			if (creator == null) {
-				// TODO kotlinify
-				for ((vmClass, value) in creators) {
-					if (modelClass.isAssignableFrom(vmClass)) {
-						creator = value
-						break
-					}
-				}
-			}
-
-			if (creator == null) {
-				throw IllegalArgumentException("Unknown model class $modelClass")
-			}
+			// If ViewModel not found among assisted factories, attempt regular dagger injection
+			val creator = viewModelProviders[modelClass]
+				?: viewModelProviders.asIterable().firstOrNull { modelClass.isAssignableFrom(it.key) }?.value
+				?: throw IllegalArgumentException("Unknown model class $modelClass")
 
 			try {
 				return creator.get() as T

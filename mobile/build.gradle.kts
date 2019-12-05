@@ -56,6 +56,7 @@ dependencies {
 	implementation(Depends.AndroidX.Lifecycle.liveDataKtx)
 	implementation(Depends.AndroidX.Lifecycle.runtimeKtx)
 	implementation(Depends.AndroidX.Lifecycle.viewModelKtx)
+	implementation(Depends.AndroidX.Lifecycle.lifecycleCommonJava8)
 	implementation(Depends.AndroidX.fragmentKtx)
 
 	implementation(Depends.Google.materialComponents)

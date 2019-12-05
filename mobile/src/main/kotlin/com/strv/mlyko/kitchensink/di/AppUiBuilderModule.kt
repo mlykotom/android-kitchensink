@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import com.squareup.inject.assisted.dagger2.AssistedModule
 import com.strv.mlyko.kitchensink.ui.auth.AuthFragment
-import com.strv.mlyko.kitchensink.ui.auth.AuthViewModel
+import com.strv.mlyko.kitchensink.ui.auth.AuthWholeViewModel
 import com.strv.mlyko.kitchensink.ui.auth.login.AuthLoginFragment
 import com.strv.mlyko.kitchensink.ui.auth.register.AuthRegisterFragment
 import com.strv.mlyko.kitchensink.ui.main.MainFragment
@@ -14,17 +14,18 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import dagger.multibindings.Multibinds
-import javax.inject.Provider
 
 @AssistedModule
 @Module(includes = [AssistedInject_AppUiBuilderModule::class])
 abstract class AppUiBuilderModule {
 	@Multibinds
 	abstract fun fragments(): Map<Class<out Fragment>, @JvmSuppressWildcards Fragment>
+
 	@Multibinds
 	abstract fun viewModels(): Map<Class<out ViewModel>, @JvmSuppressWildcards ViewModel>
+
 	@Multibinds
-	abstract fun assistedViewModels(): MutableMap<Class<out ViewModel>, ViewModelAssistedFactory<out ViewModel>>
+	abstract fun assistedViewModels(): Map<Class<out ViewModel>, @JvmSuppressWildcards ViewModelAssistedFactory<out ViewModel>>
 
 	@Binds
 	@IntoMap
@@ -50,6 +51,11 @@ abstract class AppUiBuilderModule {
 //	@IntoMap
 //	@ViewModelKey(AuthViewModel::class)
 //	abstract fun contributeAuthViewModel(frag: AuthViewModel): ViewModel
+
+	@Binds
+	@IntoMap
+	@ViewModelKey(AuthWholeViewModel::class)
+	abstract fun contributeAuthWholeViewModel(vm: AuthWholeViewModel): ViewModel
 
 //	@Binds
 //	@IntoMap

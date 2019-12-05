@@ -9,6 +9,10 @@ plugins {
 
 android {
 	compileSdkVersion(Versions.compileSdkVersion)
+	compileOptions {
+		sourceCompatibility = JavaVersion.VERSION_1_8
+		targetCompatibility = JavaVersion.VERSION_1_8
+	}
 
 	defaultConfig {
 		minSdkVersion(Versions.minSdkVersion)
@@ -22,9 +26,9 @@ android {
 			java.srcDir("src/main/kotlin")
 		}
 	}
-
-	dataBinding {
-		isEnabled = true
+	
+	buildFeatures {
+		dataBinding = true
 	}
 
 	buildTypes {

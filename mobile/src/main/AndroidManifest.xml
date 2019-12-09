@@ -2,7 +2,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android" package="com.strv.mlyko.kitchensink">
 
 	<application
-		android:name=".KitchenSinkApp"
+		android:name=".domain.KitchenSinkApp"
 		android:allowBackup="true"
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name"
@@ -10,7 +10,7 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
 
-		<activity android:name=".ui.main.MainActivity">
+		<activity android:name=".presentation.main.MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />

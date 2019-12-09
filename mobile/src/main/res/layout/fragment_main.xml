@@ -7,11 +7,11 @@
 	<data>
 		<variable
 			name="view"
-			type="com.strv.mlyko.kitchensink.ui.main.MainView" />
+			type="com.strv.mlyko.kitchensink.presentation.main.MainView" />
 
 		<variable
 			name="viewModel"
-			type="com.strv.mlyko.kitchensink.ui.main.MainViewModel" />
+			type="com.strv.mlyko.kitchensink.presentation.main.MainViewModel" />
 	</data>
 
 	<androidx.constraintlayout.widget.ConstraintLayout

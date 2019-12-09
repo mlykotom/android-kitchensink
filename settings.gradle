@@ -1,3 +1,5 @@
 rootProject.name = 'Kitchen Sink'
 rootProject.buildFileName = 'build.gradle.kts'
-include ':mobile', ':auth'
+include ':mobile',
+		':core',
+		':auth'

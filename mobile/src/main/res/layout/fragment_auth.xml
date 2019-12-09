@@ -4,11 +4,11 @@
 	<data>
 		<variable
 			name="view"
-			type="com.strv.mlyko.kitchensink.ui.auth.AuthView" />
+			type="com.strv.mlyko.kitchensink.presentation.auth.AuthView" />
 
 		<variable
 			name="viewModel"
-			type="com.strv.mlyko.kitchensink.ui.auth.AuthViewModel" />
+			type="com.strv.mlyko.kitchensink.presentation.auth.AuthViewModel" />
 	</data>
 
 	<LinearLayout

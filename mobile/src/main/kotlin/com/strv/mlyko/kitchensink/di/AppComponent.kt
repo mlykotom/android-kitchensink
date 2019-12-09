@@ -1,12 +1,12 @@
-package com.strv.mlyko.kitchensink.di
+package com.strv.mlyko.kitchensink.core.di
 
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
-import com.strv.mlyko.kitchensink.AppVersion
-import com.strv.mlyko.kitchensink.KitchenSinkApp
-import com.strv.mlyko.kitchensink.ui.main.MainActivity
+import com.strv.mlyko.kitchensink.domain.AppVersion
+import com.strv.mlyko.kitchensink.domain.KitchenSinkApp
+import com.strv.mlyko.kitchensink.presentation.main.MainActivity
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module

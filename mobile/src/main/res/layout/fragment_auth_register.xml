@@ -4,7 +4,7 @@
 	<data>
 		<variable
 			name="view"
-			type="com.strv.mlyko.kitchensink.ui.auth.register.AuthRegisterView" />
+			type="com.strv.mlyko.kitchensink.presentation.auth.register.AuthRegisterView" />
 	</data>
 
 	<LinearLayout

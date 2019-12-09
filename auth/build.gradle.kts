@@ -13,5 +13,8 @@ android {
 }
 
 dependencies {
-
+	implementation(project(":core"))
+	implementation(Depends.DI.dagger)
+	kapt(Depends.DI.daggerCompiler)
+	kapt(Depends.DI.daggerAnnotationProcessor)
 }

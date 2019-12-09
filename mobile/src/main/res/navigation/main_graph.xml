@@ -8,7 +8,7 @@
 
 	<fragment
 		android:id="@+id/mainFragment"
-		android:name="com.strv.mlyko.kitchensink.ui.main.MainFragment"
+		android:name="com.strv.mlyko.kitchensink.presentation.main.MainFragment"
 		android:label="MainFragment"
 		tools:layout="@layout/fragment_main">
 		<action
@@ -28,7 +28,7 @@
 		android:id="@id/auth_graph" app:graph="@navigation/auth_graph" />
 
 	<dialog
-		android:id="@+id/myDialog" android:name="com.strv.mlyko.kitchensink.ui.main.MyDialog" android:label="MyDialog">
+		android:id="@+id/myDialog" android:name="com.strv.mlyko.kitchensink.presentation.main.MyDialog" android:label="MyDialog">
 
 		<argument
 			android:name="title" app:argType="string" />

@@ -7,7 +7,7 @@
 	app:startDestination="@id/authFragment">
 	<fragment
 		android:id="@+id/authFragment"
-		android:name="com.strv.mlyko.kitchensink.ui.auth.AuthFragment"
+		android:name="com.strv.mlyko.kitchensink.presentation.auth.AuthFragment"
 		android:label="AuthFragment"
 		tools:layout="@layout/fragment_auth">
 		<action
@@ -29,7 +29,7 @@
 	</fragment>
 	<fragment
 		android:id="@+id/authRegisterFragment"
-		android:name="com.strv.mlyko.kitchensink.ui.auth.register.AuthRegisterFragment"
+		android:name="com.strv.mlyko.kitchensink.presentation.auth.register.AuthRegisterFragment"
 		android:label="AuthRegisterFragment"
 		tools:layout="@layout/fragment_auth_register">
 		<action
@@ -39,7 +39,7 @@
 	</fragment>
 	<fragment
 		android:id="@+id/authLoginFragment"
-		android:name="com.strv.mlyko.kitchensink.ui.auth.login.AuthLoginFragment"
+		android:name="com.strv.mlyko.kitchensink.presentation.auth.login.AuthLoginFragment"
 		android:label="AuthLoginFragment"
 		tools:layout="@layout/fragment_auth_login">
 		<action

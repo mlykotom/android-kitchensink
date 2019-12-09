@@ -2,31 +2,18 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	id("com.android.application")
-	kotlin("android")
-	kotlin("kapt")
+	`kotlin-android`
+	`kotlin-kapt`
 	id("androidx.navigation.safeargs.kotlin")
+	id("com.strv.mlyko.kitchensink")
 }
 
 android {
-	compileSdkVersion(Versions.compileSdkVersion)
-	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_1_8
-		targetCompatibility = JavaVersion.VERSION_1_8
-	}
-
 	defaultConfig {
-		minSdkVersion(Versions.minSdkVersion)
-		targetSdkVersion(Versions.targetSdkVersion)
 		versionCode = 156
 		versionName = "1.56"
 	}
 
-	sourceSets {
-		getByName("main") {
-			java.srcDir("src/main/kotlin")
-		}
-	}
-	
 	buildFeatures {
 		dataBinding = true
 	}
@@ -39,13 +26,7 @@ android {
 	}
 }
 
-tasks.withType<KotlinCompile> {
-	kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
-}
-
 dependencies {
-	implementation(Depends.Kotlin.stdlib)
-
 	implementation(Depends.AndroidX.appcompat)
 	implementation(Depends.AndroidX.coreKtx)
 	implementation(Depends.AndroidX.constraintLayout)

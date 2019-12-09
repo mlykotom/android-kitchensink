@@ -3,6 +3,7 @@ object Versions {
 	const val minSdkVersion = 21
 	const val targetSdkVersion = compileSdkVersion
 
+	// WARNING: has to be changed in buildSrc/build.gradle.kts as well
 	const val androidGradle = "4.0.0-alpha05"
 	const val kotlin = "1.3.61"
 

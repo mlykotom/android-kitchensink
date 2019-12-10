@@ -4,9 +4,11 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavGraph
 import com.strv.mlyko.kitchensink.BuildConfig
-import com.strv.mlyko.kitchensink.core.di.AppComponent
-import com.strv.mlyko.kitchensink.core.di.DaggerAppComponent
+import com.strv.mlyko.kitchensink.di.AppComponent
+import com.strv.mlyko.kitchensink.di.DaggerAppComponent
+
 
 class KitchenSinkApp : Application() {
 	val appComponent by lazy {

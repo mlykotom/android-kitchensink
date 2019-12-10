@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<data>
+		<variable
+			name="view"
+			type="com.strv.mlyko.kitchensink.auth.presentation.AuthView" />
+
+		<variable
+			name="viewModel"
+			type="com.strv.mlyko.kitchensink.auth.presentation.AuthViewModel" />
+	</data>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center"
+		android:orientation="vertical">
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text="auth fragment" />
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text='@{"suspend counter " + viewModel.authCounter}' />
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Login"
+			android:onClick="@{() -> viewModel.onLoginClick()}" />
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Register"
+			android:onClick="@{() -> viewModel.onRegisterClick()}" />
+
+	</LinearLayout>
+</layout>

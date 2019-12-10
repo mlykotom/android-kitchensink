@@ -8,9 +8,9 @@ import androidx.lifecycle.SavedStateHandle
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
 import com.strv.mlyko.kitchensink.domain.AppVersion
-import com.strv.mlyko.kitchensink.core.arch.BaseViewModel
-import com.strv.mlyko.kitchensink.core.arch.events.SingleLiveEvent
-import com.strv.mlyko.kitchensink.core.di.ViewModelAssistedFactory
+import com.strv.mlyko.kitchensink.arch.BaseViewModel
+import com.strv.mlyko.kitchensink.arch.events.SingleLiveEvent
+import com.strv.mlyko.kitchensink.common.di.ViewModelAssistedFactory
 
 const val KEY_STATE_COUNTER = "KEY_STATE_COUNTER"
 

@@ -1,5 +1,5 @@
 plugins {
-	id("com.android.application")
+	id("com.android.library")
 	`kotlin-android`
 	`kotlin-kapt`
 	id("androidx.navigation.safeargs.kotlin")
@@ -7,37 +7,12 @@ plugins {
 }
 
 android {
-	defaultConfig {
-		versionCode = 156
-		versionName = "1.56"
-	}
-
 	buildFeatures {
 		dataBinding = true
 	}
-
-	buildTypes {
-		getByName("release") {
-			isMinifyEnabled = false
-			proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-		}
-	}
-
-	bundle {
-		density {
-			enableSplit = true
-		}
-		abi {
-			enableSplit = true
-		}
-	}
-
-	dynamicFeatures.add(":auth")
 }
 
 dependencies {
-	implementation(project(":common"))
-
 	implementation(Depends.AndroidX.appcompat)
 	implementation(Depends.AndroidX.coreKtx)
 	implementation(Depends.AndroidX.constraintLayout)

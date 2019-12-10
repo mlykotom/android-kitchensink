@@ -46,7 +46,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="Authenticate"
-			android:onClick="@{() -> view.onNextClick()}"
+			android:onClick="@{() -> view.onAuthenticateClick()}"
 			app:layout_constraintTop_toBottomOf="@+id/textView"
 			app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
 			app:layout_constraintEnd_toEndOf="parent"

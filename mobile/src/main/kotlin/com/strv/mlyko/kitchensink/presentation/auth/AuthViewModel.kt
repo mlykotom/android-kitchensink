@@ -53,4 +53,12 @@ class AuthViewModel @AssistedInject constructor(
 			Log.d("bnana", "banan")
 		}
 	}
+
+	fun onRegisterClick() {
+		navigate(AuthFragmentDirections.actionAuthFragmentToAuthRegisterFragment())
+	}
+
+	fun onLoginClick() {
+		navigate(AuthFragmentDirections.actionAuthFragmentToAuthLoginFragment())
+	}
 }

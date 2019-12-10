@@ -5,6 +5,10 @@
 		<variable
 			name="view"
 			type="com.strv.mlyko.kitchensink.presentation.auth.login.AuthLoginView" />
+
+		<variable
+			name="viewModel"
+			type="com.strv.mlyko.kitchensink.presentation.auth.login.AuthLoginViewModel" />
 	</data>
 
 	<LinearLayout
@@ -23,7 +27,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="Submit"
-			android:onClick="@{() -> view.onSubmitClick()}" />
+			android:onClick="@{() -> viewModel.onSubmitClick()}" />
 
 	</LinearLayout>
 </layout>

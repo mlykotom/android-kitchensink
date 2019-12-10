@@ -33,13 +33,13 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="Login"
-			android:onClick="@{() -> view.onLoginClick()}" />
+			android:onClick="@{() -> viewModel.onLoginClick()}" />
 
 		<Button
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="Register"
-			android:onClick="@{() -> view.onRegisterClick()}" />
+			android:onClick="@{() -> viewModel.onRegisterClick()}" />
 
 	</LinearLayout>
 </layout>

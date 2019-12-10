@@ -42,6 +42,7 @@ abstract class BaseFragmentWithViewModel<VM : BaseViewModel, B : ViewDataBinding
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		lifecycle.addObserver(viewModel)
+		observeNavigation()
 	}
 
 	override fun viewBindVariables(binding: B) {

@@ -4,19 +4,19 @@ object Versions {
 	const val targetSdkVersion = compileSdkVersion
 
 	// WARNING: has to be changed in buildSrc/build.gradle.kts as well
-	const val androidGradle = "4.0.0-alpha05"
+	const val androidGradle = "4.0.0-alpha06"
 	const val kotlin = "1.3.61"
 
 	const val androidxAppcompat = "1.1.0"
 	const val androidxCore = "1.2.0-rc01"
 	const val androidxCoreTesting = "2.1.0"
 	const val androidxLifecycle = "2.2.0-rc03"
-	const val androidxLifecycleSavedStated = "1.0.0-rc02"
+	const val androidxLifecycleSavedStated = "1.0.0-rc03"
 	const val androidxConstraintLayout = "2.0.0-beta3"
-	const val androidxNavigation = "2.2.0-rc02"
+	const val androidxNavigation = "2.2.0-rc03"
 	const val androidxViewPager2 = "1.0.0"
 	const val androidxPreferences = "1.1.0"
-	const val androidXfragment = "1.2.0-rc02"
+	const val androidXfragment = "1.2.0-rc03"
 
 	const val materialComponents = "1.1.0-beta02"
 

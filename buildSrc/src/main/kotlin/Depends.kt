@@ -22,6 +22,8 @@ object Versions {
 
 	const val dagger = "2.25.2"
 	const val assistedInject = "0.5.2"
+
+	const val leakCanary = "2.0"
 }
 
 object Depends {
@@ -74,6 +76,10 @@ object Depends {
 			const val processor = "com.squareup.inject:assisted-inject-processor-dagger2:${Versions.assistedInject}"
 		}
 	}
+}
+
+object DebugDepends {
+	const val leakCanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
 }
 
 object TestDepends {

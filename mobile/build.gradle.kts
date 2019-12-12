@@ -63,4 +63,6 @@ dependencies {
 
 	compileOnly(Depends.DI.Assisted.annotations)
 	kapt(Depends.DI.Assisted.processor)
+
+	debugImplementation(DebugDepends.leakCanary)
 }

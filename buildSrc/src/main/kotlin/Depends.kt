@@ -49,8 +49,7 @@ object Depends {
 			const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidxLifecycle}"
 			const val common = "androidx.lifecycle:lifecycle-common-java8:${Versions.androidxLifecycle}"
 			const val viewModelSavedState = "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.androidxLifecycleSavedStated}"
-			const val lifecycleCommonJava8 = "androidx.lifecycle:lifecycle-common-java8:$${Versions.androidxLifecycle}"
-
+			const val lifecycleCommonJava8 = "androidx.lifecycle:lifecycle-common-java8:${Versions.androidxLifecycle}"
 		}
 
 		const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.androidXfragment}"

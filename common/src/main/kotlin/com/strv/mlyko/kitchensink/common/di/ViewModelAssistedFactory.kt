@@ -10,54 +10,63 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 interface ViewModelAssistedFactory<T : ViewModel> {
-	fun create(savedStateHandle: SavedStateHandle): T
+    fun create(savedStateHandle: SavedStateHandle): T
 }
 
 @Reusable
 class InjectingSavedStateViewModelFactory @Inject constructor(
-	private val assistedFactories: Map<Class<out ViewModel>, @JvmSuppressWildcards ViewModelAssistedFactory<out ViewModel>>,
-	private val viewModelProviders: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+    private val assistedFactories: Map<Class<out ViewModel>, @JvmSuppressWildcards ViewModelAssistedFactory<out ViewModel>>,
+    private val viewModelProviders: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ) {
-	fun create(
-		owner: SavedStateRegistryOwner,
-		defaultArgs: Bundle? = null
-	) = object : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
-		@Suppress("UNCHECKED_CAST")
-		override fun <T : ViewModel?> create(
-			key: String,
-			modelClass: Class<T>,
-			handle: SavedStateHandle
-		): T {
-			// Attempt to get ViewModel from assisted inject factories
-			assistedFactories[modelClass]?.let {
-				try {
-					return it.create(handle) as T
-				} catch (e: Exception) {
-					throw RuntimeException(e)
-				}
-			}
+    /**
+     * Creates instance of ViewModel either annotated with @AssistedInject or @Inject and passes dependencies it needs.
+     */
+    fun create(owner: SavedStateRegistryOwner, defaultArgs: Bundle? = null) =
+        object : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
+            override fun <T : ViewModel?> create(key: String, modelClass: Class<T>, handle: SavedStateHandle): T {
+                val viewModel = createAssistedInjectViewModel(modelClass, handle)
+                    ?: createInjectViewModel(modelClass, handle)
+                    ?: throw IllegalArgumentException("Unknown model class $modelClass")
 
-			// If ViewModel not found among assisted factories, attempt regular dagger injection
-			val creator = viewModelProviders[modelClass]
-				?: viewModelProviders.asIterable().firstOrNull { modelClass.isAssignableFrom(it.key) }?.value
-				?: throw IllegalArgumentException("Unknown model class $modelClass")
+                try {
+                    @Suppress("UNCHECKED_CAST")
+                    return viewModel as T
+                } catch (e: Exception) {
+                    throw RuntimeException(e)
+                }
+            }
+        }
 
-			try {
-				return creator.get() as T
-			} catch (e: Exception) {
-				throw RuntimeException(e)
-			}
-		}
-	}
+    /**
+     * Creates ViewModel based on @AssistedInject constructor and its factory
+     */
+    private fun <T : ViewModel?> createAssistedInjectViewModel(modelClass: Class<T>, handle: SavedStateHandle): ViewModel? {
+        val creator = assistedFactories[modelClass]
+            ?: assistedFactories.asIterable().firstOrNull { modelClass.isAssignableFrom(it.key) }?.value
+            ?: return null
+
+        return creator.create(handle)
+    }
+
+    /**
+     * Creates ViewModel based on regular Dagger @Inject constructor
+     */
+    private fun <T : ViewModel?> createInjectViewModel(modelClass: Class<T>, handle: SavedStateHandle): ViewModel? {
+        val creator = viewModelProviders[modelClass]
+            ?: viewModelProviders.asIterable().firstOrNull { modelClass.isAssignableFrom(it.key) }?.value
+            ?: return null
+
+        return creator.get()
+    }
 }
 
 fun createCustomFactory(
-	owner: SavedStateRegistryOwner,
-	defaultArgs: Bundle? = null,
-	factoryCreator: (handle: SavedStateHandle) -> ViewModel
+    owner: SavedStateRegistryOwner,
+    defaultArgs: Bundle? = null,
+    factoryCreator: (handle: SavedStateHandle) -> ViewModel
 ) = object : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
-	override fun <T : ViewModel?> create(key: String, modelClass: Class<T>, handle: SavedStateHandle): T {
-		@Suppress("UNCHECKED_CAST")
-		return factoryCreator(handle) as T
-	}
+    override fun <T : ViewModel?> create(key: String, modelClass: Class<T>, handle: SavedStateHandle): T {
+        @Suppress("UNCHECKED_CAST")
+        return factoryCreator(handle) as T
+    }
 }

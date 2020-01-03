@@ -26,8 +26,16 @@
 		<Button
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="Submit"
-			android:onClick="@{() -> viewModel.onSubmitClick()}" />
+			android:onClick="@{() -> viewModel.onSubmitClick()}"
+			android:enabled="@{!viewModel.submitInProgress}"
+			android:text="Submit" />
+
+		<ProgressBar
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:indeterminate="true"
+			android:visibility="@{viewModel.submitInProgress}"
+			style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
 
 	</LinearLayout>
 </layout>

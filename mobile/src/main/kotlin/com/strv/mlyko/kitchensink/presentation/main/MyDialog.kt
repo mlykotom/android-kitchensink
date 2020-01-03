@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
 import com.strv.mlyko.kitchensink.R
-import com.strv.mlyko.kitchensink.domain.AppVersion
+import com.strv.mlyko.kitchensink.common.domain.AppVersion
 import javax.inject.Inject
 
 class MyDialog @Inject constructor(

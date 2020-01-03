@@ -1,17 +1,18 @@
 package com.strv.mlyko.kitchensink.auth.di
 
-import android.content.Context
-import com.strv.mlyko.kitchensink.auth.presentation.AuthActivity
+import androidx.fragment.app.Fragment
 import com.strv.mlyko.kitchensink.common.di.FeatureScope
-import com.strv.mlyko.kitchensink.di.AppComponent
-import com.strv.mlyko.kitchensink.domain.KitchenSinkApp
+import com.strv.mlyko.kitchensink.features.AuthFeature
 import dagger.Component
+import dagger.Module
+import javax.inject.Provider
 
 @Component(
 	dependencies = [
-		AppComponent::class
+		AuthFeature.Dependencies::class
 	],
 	modules = [
+		AuthModule::class,
 		AuthUiBuilderModule::class
 	]
 )
@@ -19,19 +20,13 @@ import dagger.Component
 interface AuthComponent {
 	@Component.Factory
 	interface Factory {
-		fun create(
-			appComponent: AppComponent
-		): AuthComponent
+		fun create(dependencies: AuthFeature.Dependencies): AuthComponent
 	}
 
-	fun inject(a: AuthActivity)
+	fun getMapOfClassAndFragmentProvider(): Map<Class<out Fragment>, @JvmSuppressWildcards Provider<Fragment>>
 }
 
-
-interface FeatureModule{
-	fun install(context: Context)
-}
-
-fun install(context:Context){
+@Module
+internal object AuthModule {
 
 }

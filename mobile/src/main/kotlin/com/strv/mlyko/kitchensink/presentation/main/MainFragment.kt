@@ -1,8 +1,8 @@
 package com.strv.mlyko.kitchensink.presentation.main
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -12,13 +12,15 @@ import com.google.android.material.snackbar.Snackbar
 import com.strv.mlyko.kitchensink.R
 import com.strv.mlyko.kitchensink.arch.BaseFragmentWithViewModel
 import com.strv.mlyko.kitchensink.arch.BaseView
+import com.strv.mlyko.kitchensink.common.domain.AppVersion
 import com.strv.mlyko.kitchensink.databinding.FragmentMainBinding
-import com.strv.mlyko.kitchensink.domain.AppVersion
+import com.strv.mlyko.kitchensink.domain.appComponent
 import javax.inject.Inject
 
 interface MainView : BaseView {
 	fun onAuthenticateClick()
 	fun onMyDialogClick()
+	fun onTestClick()
 }
 
 class MainFragment @Inject constructor(
@@ -31,24 +33,20 @@ class MainFragment @Inject constructor(
 	override fun inflateBinding(inflater: LayoutInflater) = FragmentMainBinding.inflate(inflater)
 
 	override fun onAuthenticateClick() {
-		val packageName = "com.strv.mlyko.kitchensink"
-
-		val intent = Intent(Intent.ACTION_VIEW).setClassName(
-			packageName,
-			"$packageName.auth.presentation.AuthActivity"
-		)
-		startActivity(intent)
-
-//findNavController().graph.addDestination()
-
-
-//		findNavController().navigate(R.id.navigation_auth)
-
-//		findNavController().navigate(MainFragmentDirections.actionMainFragmentToAuthFragment())
+		val authFeature = appComponent.authFeature().get()
+		authFeature.initialize(findNavController())
+		findNavController().navigate(MainFragmentDirections.actionMainFragmentToAuthFragment())
 	}
 
 	override fun onMyDialogClick() {
 		findNavController().navigate(MainFragmentDirections.actionMainFragmentToMyDialog("some awesome title $appVersion"))
+	}
+
+	override fun onTestClick() {
+		val subGraph = findNavController().navInflater.inflate(R.navigation.navigation_test)
+		findNavController().graph.addDestination(subGraph)
+
+		findNavController().navigate(MainFragmentDirections.actionMainFragmentToNavigationTest())
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

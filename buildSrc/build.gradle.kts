@@ -12,7 +12,7 @@ kotlinDslPluginOptions {
 	experimentalWarning.set(false)
 }
 
-val androidGradle = "4.0.0-alpha06"
+val androidGradle = "4.0.0-alpha07"
 val kotlin = "1.3.61"
 
 dependencies {

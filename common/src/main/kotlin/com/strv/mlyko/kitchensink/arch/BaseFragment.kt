@@ -7,13 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.HasDefaultViewModelProviderFactory
-import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.strv.mlyko.kitchensink.common.BR
 import com.strv.mlyko.kitchensink.common.di.InjectingSavedStateViewModelFactory
+import com.strv.mlyko.kitchensink.common.di.ViewModelAssistedFactory
+import com.strv.mlyko.kitchensink.features.AuthFeature
 import javax.inject.Inject
+import javax.inject.Provider
 
 interface BaseView
 

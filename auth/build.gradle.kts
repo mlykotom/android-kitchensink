@@ -1,5 +1,5 @@
 plugins {
-//	id("com.android.library")
+	//	id("com.android.library")
 	id("com.android.dynamic-feature")
 	`kotlin-android`
 	`kotlin-kapt`
@@ -8,9 +8,7 @@ plugins {
 }
 
 android {
-	buildFeatures {
-		dataBinding = true
-	}
+	dataBinding.isEnabled = true
 }
 
 dependencies {
@@ -42,4 +40,7 @@ dependencies {
 
 	compileOnly(Depends.DI.Assisted.annotations)
 	kapt(Depends.DI.Assisted.processor)
+
+	compileOnly(Depends.AutoService.annotations)
+	kapt(Depends.AutoService.processor)
 }

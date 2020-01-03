@@ -1,4 +1,4 @@
-package com.strv.mlyko.kitchensink.domain
+package com.strv.mlyko.kitchensink.common.domain
 
 data class AppVersion(
 	val versionCode: Int,

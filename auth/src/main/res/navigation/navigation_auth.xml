@@ -35,8 +35,8 @@
 		tools:layout="@layout/fragment_auth_register">
 		<action
 			android:id="@+id/action_authRegisterFragment_popAuth"
-			app:popUpTo="@id/authFragment"
-			app:popUpToInclusive="false" />
+			app:popUpTo="@id/navigation_auth"
+			app:popUpToInclusive="true" />
 	</fragment>
 	<fragment
 		android:id="@+id/authLoginFragment"
@@ -45,7 +45,7 @@
 		tools:layout="@layout/fragment_auth_login">
 		<action
 			android:id="@+id/action_authLoginFragment_popAuth"
-			app:popUpTo="@id/authFragment"
-			app:popUpToInclusive="false" />
+			app:popUpTo="@id/navigation_auth"
+			app:popUpToInclusive="true" />
 	</fragment>
 </navigation>

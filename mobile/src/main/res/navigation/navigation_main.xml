@@ -11,6 +11,7 @@
 		android:name="com.strv.mlyko.kitchensink.presentation.main.MainFragment"
 		android:label="MainFragment"
 		tools:layout="@layout/fragment_main">
+		<!-- keep here to navigate to auth -->
 		<action
 			android:id="@+id/action_mainFragment_to_authFragment"
 			app:enterAnim="@anim/nav_default_enter_anim"
@@ -22,6 +23,8 @@
 			android:id="@+id/action_mainFragment_to_myDialog"
 			app:destination="@id/myDialog"
 			app:launchSingleTop="true" />
+		<action
+			android:id="@+id/action_mainFragment_to_navigation_test" app:destination="@id/navigation_test" />
 	</fragment>
 
 	<dialog
@@ -33,5 +36,13 @@
 			android:name="title" app:argType="string" />
 
 	</dialog>
+
+<!--	<include-dynamic-->
+<!--		android:id="@id/navigation_auth"-->
+<!--		app:graphPackage="com.strv.mlyko.kitchensink.auth"-->
+<!--		app:graphResName="navigation_auth"-->
+<!--		app:moduleName="auth" />-->
+
+<!--	<include app:graph="@navigation/navigation_test" />-->
 
 </navigation>

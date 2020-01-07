@@ -1,11 +1,9 @@
 package com.strv.mlyko.kitchensink.auth.presentation
 
-import android.content.Context
 import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import androidx.navigation.navGraphViewModels
 import com.strv.mlyko.kitchensink.R
-import com.strv.mlyko.kitchensink.arch.BaseFragment
 import com.strv.mlyko.kitchensink.arch.BaseFragmentWithViewModel
 import com.strv.mlyko.kitchensink.arch.BaseView
 import com.strv.mlyko.kitchensink.auth.databinding.FragmentAuthBinding

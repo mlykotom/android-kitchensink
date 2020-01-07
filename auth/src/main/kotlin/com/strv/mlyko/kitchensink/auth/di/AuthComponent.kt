@@ -6,6 +6,7 @@ import com.strv.mlyko.kitchensink.features.AuthFeature
 import dagger.Component
 import dagger.Module
 import javax.inject.Provider
+import javax.inject.Singleton
 
 @Component(
 	dependencies = [
@@ -16,7 +17,8 @@ import javax.inject.Provider
 		AuthUiBuilderModule::class
 	]
 )
-@FeatureScope
+//@FeatureScope
+@Singleton
 interface AuthComponent {
 	@Component.Factory
 	interface Factory {

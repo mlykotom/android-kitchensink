@@ -49,9 +49,20 @@
 			android:gravity="center"
 			android:text="hello android fragment"
 			app:layout_constraintTop_toBottomOf="@+id/button2"
-			app:layout_constraintBottom_toTopOf="@+id/button"
+			app:layout_constraintBottom_toTopOf="@+id/user_logged"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent" />
+
+		<TextView
+			android:id="@+id/user_logged"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text='@{"user logged in? " + viewModel.isUserLoggedIn}'
+			app:layout_constraintEnd_toEndOf="parent"
+			tools:text="user is logged in? false"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/textView"
+			app:layout_constraintBottom_toTopOf="@id/button" />
 
 		<Button
 			android:id="@+id/button"
@@ -59,7 +70,18 @@
 			android:layout_height="wrap_content"
 			android:text="Authenticate"
 			android:onClick="@{() -> view.onAuthenticateClick()}"
-			app:layout_constraintTop_toBottomOf="@+id/textView"
+			app:layout_constraintTop_toBottomOf="@+id/user_logged"
+			app:layout_constraintBottom_toTopOf="@+id/button_logout"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent" />
+
+		<Button
+			android:id="@+id/button_logout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Logout"
+			android:onClick="@{() -> viewModel.onLogoutClick()}"
+			app:layout_constraintTop_toBottomOf="@+id/button"
 			app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent" />

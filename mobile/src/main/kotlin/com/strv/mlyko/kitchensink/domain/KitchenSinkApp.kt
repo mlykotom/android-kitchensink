@@ -3,6 +3,7 @@ package com.strv.mlyko.kitchensink.domain
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.fragment.app.Fragment
 import com.strv.mlyko.kitchensink.BuildConfig
 import com.strv.mlyko.kitchensink.common.domain.AppVersion
@@ -27,6 +28,8 @@ class KitchenSinkApp : Application(), AuthFeature.Dependencies {
 		@JvmStatic
 		fun appComponent(context: Context): AppComponent = (context.applicationContext as KitchenSinkApp).appComponent
 	}
+
+	override val sharedPreferences: SharedPreferences get() = appComponent.sharedPrefs()
 
 	override val appContext: Context = this
 }

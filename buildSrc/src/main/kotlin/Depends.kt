@@ -39,7 +39,7 @@ object Depends {
 	}
 
 	object Kotlin {
-		const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+		const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
 	}
 
 	object AndroidX {

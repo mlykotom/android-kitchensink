@@ -5,12 +5,18 @@ import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.viewModelScope
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
 import com.strv.mlyko.kitchensink.arch.BaseViewModel
 import com.strv.mlyko.kitchensink.arch.events.SingleLiveEvent
 import com.strv.mlyko.kitchensink.common.di.ViewModelAssistedFactory
 import com.strv.mlyko.kitchensink.common.domain.AppVersion
+import com.strv.mlyko.kitchensink.common.domain.manager.UserManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.consumeEach
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 const val KEY_STATE_COUNTER = "KEY_STATE_COUNTER"
 
@@ -18,7 +24,8 @@ class MainViewModel @AssistedInject constructor(
 	private val sharedPrefs: SharedPreferences,
 	private val appContext: Context,
 	private val appVersion: AppVersion,
-	@Assisted private val savedStateHandle: SavedStateHandle
+	@Assisted private val savedStateHandle: SavedStateHandle,
+	private val userManager: UserManager
 ) : BaseViewModel() {
 	@AssistedInject.Factory
 	interface Factory : ViewModelAssistedFactory<MainViewModel> {
@@ -29,6 +36,8 @@ class MainViewModel @AssistedInject constructor(
 
 	val counter = MutableLiveData<Int>(0)
 
+	val isUserLoggedIn = MutableLiveData(userManager.isUserLoggedIn.valueOrNull ?: false)
+
 	init {
 		Log.d("MainViewModel", sharedPrefs.getInt("counter", -1).toString())
 
@@ -36,6 +45,20 @@ class MainViewModel @AssistedInject constructor(
 		counter.observeForever {
 			savedStateHandle.set(KEY_STATE_COUNTER, it)
 		}
+
+		viewModelScope.launch {
+
+			userManager.isUserLoggedIn.consumeEach {
+				Log.d("MAIN_VM", it.toString())
+				withContext(Dispatchers.Main) {
+					isUserLoggedIn.value = it
+				}
+			}
+		}
+	}
+
+	fun onLogoutClick() {
+		userManager.logUser(false)
 	}
 
 	fun onPlusClick() {

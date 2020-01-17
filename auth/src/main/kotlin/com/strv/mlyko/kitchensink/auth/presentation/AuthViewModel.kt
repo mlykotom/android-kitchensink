@@ -10,6 +10,7 @@ import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
 import com.strv.mlyko.kitchensink.R
 import com.strv.mlyko.kitchensink.arch.BaseViewModel
+import com.strv.mlyko.kitchensink.arch.NavigationCommand
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

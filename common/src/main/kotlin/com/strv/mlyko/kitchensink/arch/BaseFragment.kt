@@ -46,6 +46,8 @@ abstract class BaseFragmentWithViewModel<VM : BaseViewModel, B : ViewDataBinding
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+		lifecycle.addObserver(viewModel)
+
 //		lifecycle.addObserver(object : DefaultLifecycleObserver {
 //			override fun onCreate(owner: LifecycleOwner) {
 //				super.onCreate(owner)
@@ -59,7 +61,6 @@ abstract class BaseFragmentWithViewModel<VM : BaseViewModel, B : ViewDataBinding
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		lifecycle.addObserver(viewModel)
 		observeNavigation()
 	}
 

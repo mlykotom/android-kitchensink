@@ -13,5 +13,7 @@ internal object CommonAppModule {
 	fun provideAppContext(application: Application): Context = application.applicationContext
 
 	@Provides
-	fun provideSharedPreferences(context: Context): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+	fun provideSharedPreferences(
+		context: Context
+	): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 }

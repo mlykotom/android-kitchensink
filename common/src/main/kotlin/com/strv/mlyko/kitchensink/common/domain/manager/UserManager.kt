@@ -13,6 +13,7 @@ import javax.inject.Singleton
 
 @ExperimentalCoroutinesApi
 @Singleton
+
 class UserManager @Inject constructor(
 	private val sharedPreferences: SharedPreferences
 ) {
@@ -20,7 +21,7 @@ class UserManager @Inject constructor(
 
 	init {
 		GlobalScope.launch {
-			isUserLoggedIn.consumeEach { b->
+			isUserLoggedIn.consumeEach { b ->
 				Log.d("USERMANAGER", "user logged in $b")
 			}
 		}
@@ -36,4 +37,3 @@ class UserManager @Inject constructor(
 		}
 	}
 }
-

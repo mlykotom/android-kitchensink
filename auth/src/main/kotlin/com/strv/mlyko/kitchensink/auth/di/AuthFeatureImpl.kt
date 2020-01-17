@@ -26,6 +26,8 @@ class AuthFeatureImpl : AuthFeature {
 
 	override fun getLaunchIntent(context: Context): Intent = TODO()// Intent(context, AuthActivity::class.java)
 
+	override val navGraph: Int = R.navigation.navigation_auth
+
 	override fun initialize(navController: NavController) {
 		val navGraph = navController.navInflater.inflate(R.navigation.navigation_auth)
 		navController.graph.addDestination(navGraph)

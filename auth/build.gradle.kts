@@ -1,5 +1,6 @@
 plugins {
-	id("com.android.library")
+	//	id("com.android.library")
+	id("com.android.dynamic-feature")
 	`kotlin-android`
 	`kotlin-kapt`
 	id("androidx.navigation.safeargs.kotlin")
@@ -7,14 +8,39 @@ plugins {
 }
 
 android {
-	buildFeatures {
-		dataBinding = true
-	}
+	dataBinding.isEnabled = true
 }
 
 dependencies {
-	implementation(project(":core"))
+	implementation(project(":common"))
+	implementation(project(":mobile"))
+
+	implementation(Depends.AndroidX.appcompat)
+	implementation(Depends.AndroidX.coreKtx)
+	implementation(Depends.AndroidX.constraintLayout)
+	implementation(Depends.AndroidX.navigationFragment)
+	implementation(Depends.AndroidX.navigationUI)
+	implementation(Depends.AndroidX.viewPager2)
+	implementation(Depends.AndroidX.preferences)
+
+	implementation(Depends.AndroidX.Lifecycle.extensions)
+	implementation(Depends.AndroidX.Lifecycle.common)
+	implementation(Depends.AndroidX.Lifecycle.viewModelSavedState)
+	implementation(Depends.AndroidX.Lifecycle.liveDataKtx)
+	implementation(Depends.AndroidX.Lifecycle.runtimeKtx)
+	implementation(Depends.AndroidX.Lifecycle.viewModelKtx)
+	implementation(Depends.AndroidX.Lifecycle.lifecycleCommonJava8)
+	implementation(Depends.AndroidX.fragmentKtx)
+
+	implementation(Depends.Google.materialComponents)
+
 	implementation(Depends.DI.dagger)
 	kapt(Depends.DI.daggerCompiler)
 	kapt(Depends.DI.daggerAnnotationProcessor)
+
+	compileOnly(Depends.DI.Assisted.annotations)
+	kapt(Depends.DI.Assisted.processor)
+
+	compileOnly(Depends.AutoService.annotations)
+	kapt(Depends.AutoService.processor)
 }

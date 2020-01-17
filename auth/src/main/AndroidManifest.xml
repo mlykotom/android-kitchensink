@@ -1,1 +1,23 @@
-<manifest package="com.strv.mlyko.kitchensink.auth" />
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:dist="http://schemas.android.com/apk/distribution"
+	package="com.strv.mlyko.kitchensink.auth">
+
+	<dist:module
+		dist:instant="false" dist:title="Authentication Module">
+
+		<dist:fusing dist:include="true" />
+
+		<dist:delivery>
+			<dist:install-time />
+		</dist:delivery>
+
+	</dist:module>
+
+	<application>
+		<activity android:name="com.strv.mlyko.kitchensink.auth.presentation.AuthActivity">
+			<nav-graph android:value="@navigation/navigation_auth" />
+		</activity>
+	</application>
+
+</manifest>

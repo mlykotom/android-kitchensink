@@ -2,7 +2,6 @@ buildscript {
 	repositories {
 		google()
 		jcenter()
-		maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") } // TODO remove later when not canary AS
 	}
 
 	dependencies {
@@ -16,6 +15,6 @@ allprojects {
 	repositories {
 		google()
 		jcenter()
-		maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") } // TODO remove later when not canary AS
+		maven { setUrl("https://ci.android.com/builds/submitted/6043188/androidx_snapshot/latest/repository/") }
 	}
 }

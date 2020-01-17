@@ -3,6 +3,7 @@ package com.strv.mlyko.kitchensink
 import Depends
 import Versions
 import com.android.build.gradle.BaseExtension
+import com.android.build.gradle.internal.tasks.factory.dependsOn
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -31,8 +32,6 @@ private fun Project.configureAndroid() = project.extensions.getByType<BaseExtens
 	defaultConfig {
 		minSdkVersion(Versions.minSdkVersion)
 		targetSdkVersion(Versions.targetSdkVersion)
-		versionCode = 1
-		versionName = "1"
 	}
 
 	sourceSets {

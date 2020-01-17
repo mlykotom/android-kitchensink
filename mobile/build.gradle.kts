@@ -18,15 +18,27 @@ android {
 
 	buildTypes {
 		getByName("release") {
-			isMinifyEnabled = false
+			isMinifyEnabled = true
 			proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
 		}
 	}
+
+	bundle {
+		density {
+			enableSplit = true
+		}
+		abi {
+			enableSplit = true
+		}
+	}
+
+	// dynamic feature modules!
+	dynamicFeatures.add(":auth")
 }
 
 dependencies {
-	implementation(project(":auth"))
-	implementation(project(":core"))
+	implementation(project(":common"))
+
 	implementation(Depends.AndroidX.appcompat)
 	implementation(Depends.AndroidX.coreKtx)
 	implementation(Depends.AndroidX.constraintLayout)
@@ -52,4 +64,6 @@ dependencies {
 
 	compileOnly(Depends.DI.Assisted.annotations)
 	kapt(Depends.DI.Assisted.processor)
+
+	debugImplementation(DebugDepends.leakCanary)
 }

@@ -1,26 +1,32 @@
-package com.strv.mlyko.kitchensink.core.di
+package com.strv.mlyko.kitchensink.di
 
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.preference.PreferenceManager
-import com.strv.mlyko.kitchensink.domain.AppVersion
+import com.strv.mlyko.kitchensink.common.di.DaggerLazy
+import com.strv.mlyko.kitchensink.common.domain.AppVersion
 import com.strv.mlyko.kitchensink.domain.KitchenSinkApp
+import com.strv.mlyko.kitchensink.features.AuthFeature
+import com.strv.mlyko.kitchensink.features.Feature
+import com.strv.mlyko.kitchensink.features.requireFeature
 import com.strv.mlyko.kitchensink.presentation.main.MainActivity
+import dagger.Binds
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import dagger.multibindings.IntoSet
 import javax.inject.Singleton
 
 @Component(
 	modules = [
 		CommonAppModule::class,
-		AppUiBuilderModule::class
+		FeaturesModule::class,
+		MobileUiBuilderModule::class
 	]
 )
 @Singleton
-interface AppComponent {
+interface AppComponent : AuthFeature.Dependencies {
 	@Component.Factory
 	interface Factory {
 		fun create(
@@ -30,6 +36,8 @@ interface AppComponent {
 			appVersion: AppVersion
 		): AppComponent
 	}
+
+	fun authFeature(): DaggerLazy<AuthFeature>
 
 	fun context(): Context
 	fun application(): Application
@@ -42,11 +50,17 @@ interface AppComponent {
 }
 
 @Module
-object CommonAppModule {
+object FeaturesModule {
 	@Provides
-	fun provideAppContext(application: Application): Context = application.applicationContext
+	@Singleton
+	fun provideAuthFeature(appComponent: AppComponent): AuthFeature {
+		return requireFeature<AuthFeature, AuthFeature.Dependencies>(appComponent)
+	}
 
-	@Provides
-	fun provideSharedPreferences(context: Context): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+	@Module
+	abstract class Binders {
+		@Binds
+		@IntoSet
+		abstract fun bindAuthFeatureToFeatures(f: AuthFeature): Feature<*>
+	}
 }
-

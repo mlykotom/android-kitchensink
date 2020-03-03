@@ -4,8 +4,8 @@ object Versions {
 	const val targetSdkVersion = compileSdkVersion
 
 	// WARNING: has to be changed in buildSrc/build.gradle.kts as well
-	const val androidGradle = "4.0.0-alpha08"
-	const val kotlin = "1.3.61"
+	const val androidGradle = "4.0.0-beta01"
+	const val kotlin = "1.3.70-eap-42"
 
 	const val androidxAppcompat = "1.1.0"
 	const val androidxCore = "1.2.0-rc01"
